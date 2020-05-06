@@ -7,4 +7,3 @@ npm-debug.log
 .env
 .DS_Store
 
-./src/config/config.env
