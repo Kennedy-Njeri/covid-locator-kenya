@@ -7,7 +7,6 @@ const covidRouter = require('./routes/covid')
 
 
 
-
 dotenv.config({ path: './src/config/config.env'})
 
 //console.log(require('dotenv').config({ path: './src/config/config.env'}))

@@ -5,6 +5,7 @@ const Covid = require('../models/covid')
 
 
 
+
 // get covid cases
 router.get('/covid', async (req, res) => {
     try {
