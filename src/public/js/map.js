@@ -81,12 +81,32 @@ var pulsingDot = {
 };
 
 
+// fetch data from API
+async function getCovid() {
+    const response = await fetch('/covid')
+    const data = await response.json()
+
+    const covid = data.data.map((cov) => {
+        return {
+            type: 'Feature',
+            geometry: {
+                type: 'Point',
+                coordinates: [cov.location.coordinates[0], cov.location.coordinates[1]]
+            },
+            properties: {
+                countyCode: cov.countyCode
+
+            }
+        }
+    })
+
+    loadMap(covid)
+    console.log(data)
+}
 
 
-
-
-
-function loadMap() {
+// load map with points
+function loadMap(covid) {
 
     map.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
 
@@ -98,19 +118,7 @@ function loadMap() {
                 type: 'geojson',
                 data: {
                     type: 'FeatureCollection',
-                    features: [
-                        {
-                            type: 'Feature',
-                            geometry: {
-                                type: 'Point',
-                                coordinates: [36.817245, -1.283253]
-                            },
-                            properties: {
-                                countyCode: '1',
-
-                            }
-                        }
-                    ]
+                    features: covid
                 }
             },
             layout: {
@@ -125,7 +133,7 @@ function loadMap() {
 }
 
 
-loadMap()
+getCovid()
 
 
 // https://docs.mapbox.com/mapbox-gl-js/example/mouse-position/
