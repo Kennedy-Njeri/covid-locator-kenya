@@ -10,7 +10,7 @@ const map = new mapboxgl.Map({
 
 
 
-var size = 200;
+var size = 100;
 
 // implementation of CustomLayerInterface to draw a pulsing dot icon on the map
 // see https://docs.mapbox.com/mapbox-gl-js/api/#customlayerinterface for more info
