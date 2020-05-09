@@ -1,6 +1,6 @@
 const express = require('express')
 const router = new express.Router()
-const Covid = require('../models/covid')
+const Covid1 = require('../models/covid1')
 
 
 
@@ -8,14 +8,14 @@ const Covid = require('../models/covid')
 
 
 // get covid cases
-router.get('/covid', async (req, res) => {
+router.get('/covid1', async (req, res) => {
     try {
-        const covid = await Covid.find({})
+        const covid1 = await Covid1.find({})
 
         return res.status(200).json({
             success: true,
-            count: covid.length,
-            data: covid
+            count: covid1.length,
+            data: covid1
         })
     } catch (e) {
         res.status(500).json({
@@ -25,15 +25,14 @@ router.get('/covid', async (req, res) => {
 
 })
 
-
-router.post('/covid', async (req, res) => {
+router.post('/covid1', async (req, res) => {
     try {
         //console.log(req.body)
-        const covid = await Covid.create(req.body)
+        const covid1 = await Covid1.create(req.body)
 
         return res.status(200).json({
             success: true,
-            data: covid
+            data: covid1
         })
     } catch (e) {
         console.log(e)
@@ -48,9 +47,6 @@ router.post('/covid', async (req, res) => {
     }
 
 })
-
-
-
 
 
 

@@ -4,6 +4,7 @@ const dotenv = require('dotenv')
 const cors = require('cors')
 require('./db/mongoose')
 const covidRouter = require('./routes/covid')
+const covidRouter1 = require('./routes/covid1')
 
 
 
@@ -24,7 +25,8 @@ app.use(cors())
 app.use(express.static(path.join(__dirname, 'public')))
 
 
-app.use(covidRouter)
+app.use(covidRouter, covidRouter1)
+
 
 
 const PORT = process.env.PORT || 5000

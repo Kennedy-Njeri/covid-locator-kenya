@@ -9,15 +9,15 @@ async function addCovid(e) {
 
     if (countyCode.value === '' || address.value === '') {
         alert("Please fill in the fields")
-    } 
-    
+    }
+
     const sendBody = {
         countyCode: countyCode.value,
         address: address.value
     }
-    
+
     try {
-        const response = await fetch('/covid1', {
+        const response = await fetch('/covid', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'
@@ -30,13 +30,13 @@ async function addCovid(e) {
         }
 
         alert("Case added")
-        window.location.href= '/index1.html'
+        window.location.href= '/index.html'
 
     } catch (e) {
         alert(e)
         return
     }
-    
+
 
 }
 
